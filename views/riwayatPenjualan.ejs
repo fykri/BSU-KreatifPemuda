@@ -1,0 +1,28 @@
+<div class="title-menu">
+    <i class="fa-solid fa-play"></i>
+    <h3>Riwayat Penjualan</h3>
+</div>
+
+<div class="table-sampah">
+    <h3>Tabel Riyawat Penjualan</h3>
+    <table border="1">
+        <tr>
+            <th>Id Keluar</th>
+            <th>Nama Pengepul</th>
+            <th>Tanggal Masuk</th>
+            <th>Jenis Sampah</th>
+            <th>Berat Sampah</th>
+            <th>Pendapatan</th>
+        </tr>
+        <% for(let x of data){ %>
+         <tr>
+            <td><%= x.id_keluar %></td>
+            <td><%= x.nama_pengepul %></td>
+            <td><%= x.tanggal_keluar %></td>
+            <td><%= x.jenis_sampah %></td>
+            <td><%= x.total_berat%> Kg</td>
+            <td><%= x.pendapatan%> </td>
+         </tr>
+         <% } %>
+    </table>
+</div>

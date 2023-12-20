@@ -1,0 +1,629 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@600;700&family=Roboto:wght@900&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+    display: flex;
+    height: 100vh;
+}
+
+.header {
+    background-color: #435585;
+    padding: 10px;
+    justify-content: center;
+    width: 18%;
+    color: white;
+}
+
+
+
+.header h1 {
+    font-size: 30px;
+    margin-top: 20px;
+    padding: 5px;
+    margin-bottom: 25px;
+    text-align: center;
+}
+
+.header nav {
+    display: flex;
+    flex-direction: column;
+    margin-top: 60px;
+    gap: 55px;
+    justify-content: center;
+    align-items: center;
+}
+
+.header nav a {
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    border-radius: 10px;
+}
+
+.header nav a:hover {
+    color: #435585;
+    background-color: white;
+}
+
+.header nav a.active {
+    color: #435585;
+    background-color: white;
+}
+
+hr {
+    margin-top: 5px;
+}
+
+div.ig {
+    position: absolute;
+    bottom: 0;
+    padding: 10px;
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    align-items: center;
+}
+
+div.ig i {font-size: 25px;}
+
+#main {
+    padding: 15px;
+    overflow: scroll;
+    width: 82%;
+}
+#main div.title-menu {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+
+div.title-menu i {
+    color: #435585;
+    font-size: 20px;
+}
+
+div.title-menu h3 {
+    font-size: 15px;
+    background-color: #435585;
+    padding: 8px;
+    border-radius: 10px;
+    color: white;
+}
+div#main form {
+    margin-top: 25px;
+    padding-left: 15px;
+    width: 306px;
+}
+div#main form div.title {
+    color: #435585;
+    margin-bottom: 20px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #435585;
+}
+#main form .input {
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    color: #435585;
+}
+
+#main form .input div {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main form .input div input, 
+#main form .input div select {
+    width: 50%;
+    padding: 5px;
+    color: #435585;
+    border: 2px solid #435585;
+    border-radius: 5px;
+
+}
+
+#main form input[type = 'submit'] {
+    margin-top: 10px;
+    background-color: #435585;
+    color: white;
+    border: 2px solid #435585;
+    padding: 8px;
+    font-weight: bold;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#main div.table-sampah{
+    margin-top: 50px;
+    padding: 20px;
+}
+
+#main div.table-sampah h3 {
+    color: #435585;
+    margin-left: 5px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #435585;
+    display: inline-block;
+}
+
+#main div.table-sampah table {
+    margin-top: 10px;
+    border-collapse: collapse;
+    color: #435585;
+    border: 1px solid;
+    border-radius: 10px;
+    overflow: hidden;
+    border-spacing: 0;
+}
+
+#main div.table-sampah.jualSampah table tbody{
+    max-height: 402px;
+    width: auto;
+    overflow-y: auto;    
+    display: block;
+}
+
+#main div.table-sampah.jualSampah table {
+    flex-direction: column-reverse !important;
+}
+
+#main div.table-sampah.jualSampah table thead {
+    display: table;
+    width: 100%;
+}
+
+#main div.table-sampah table tr th, 
+.table-sampah table tr td{
+    padding: 10px;
+    text-align: center;
+    width: 200px;
+    table-layout: fixed;
+    /* border: 3px solid #435585; */
+}
+
+
+#main div.table-sampah table tr th {
+    background-color: #435585;
+    border: 0;
+    color: white;
+}
+
+#main div.table-sampah table tr:nth-last-child(1) {
+    border-bottom: 3px solid #435585;
+}
+
+
+
+#main div.table-sampah table tr {
+    border-bottom: 1px solid #dddddd;
+}
+
+
+#main div.table-sampah table tr:nth-child(odd){
+    background-color: #f2f2f2;
+}
+
+#main div.table-sampah table tr:hover {
+    background-color: #ddd;
+}
+
+button {
+    margin: 5px 5px;
+    text-decoration: underline;
+    cursor: pointer;
+    border: 0;
+    color: #435585;
+    padding: 10px;
+    background-color: white;
+    font-weight: bold;
+}
+
+button:hover {color: #212940;}
+
+
+#main div.table-sampah tr td.edit-delete {
+    display: flex;
+    justify-content: center;
+    gap: 1.5rem;
+    border: none;
+}
+
+#main div.table-sampah tr td.edit-delete form {
+    background-color: blue;
+    margin: 0;
+    padding: 0;
+    width: 0;
+}
+
+#main div.table-sampah tr td.edit-delete form button{
+    margin: 0;
+    padding: 0;
+    background-color: transparent;
+}
+
+
+#main div.table-sampah td i:hover {
+    cursor: pointer;
+    color: #212940;
+}
+
+#main div.table-sampah td a {
+    color: #435585;
+}
+
+#main div.popup-updateData{
+    display: flex;
+    position: absolute;
+    left: 0;
+    right: 0;
+    text-align: center;
+    top: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: all .3s;
+    visibility: hidden;
+}
+
+#main #popup .container-popup {
+    visibility: visible;
+    pointer-events: auto;
+    opacity: 1;
+    transform: scale(1);
+}
+
+#main .container-popup {
+    opacity: 0; 
+    background-color: #435585;
+    color: white;
+    border-radius: 10px;
+    padding: 10px 20px 20px 20px;
+    transform: scale(.25);
+    transition: all .4s .1s;
+    flex-direction: column;
+    width: 380px;
+    position: relative;
+}
+
+#main .container-jual {
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    align-items: center;
+    justify-content: center;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    visibility: hidden;
+    transition: all .3s;
+}
+
+#main #container-jualSampah .wrapper {
+    visibility: visible;
+    pointer-events: auto;
+    transform: scale(1);
+    transition: all .4s .1s;
+}
+
+#main .container-jual .wrapper {
+    background-color: #435585;
+    padding: 0px 20px 20px 20px;
+    border-radius: 10px;
+    border: 2px solid white;
+    outline: 1px solid #435585;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    /* opacity: 0; */
+    position: relative;
+    transform: scale(.25);
+    transition: all .4s .1s;
+}
+
+#main .container-popup h3 {
+    background-color: white;
+    display: inline;
+    color: #435585;
+    padding: 10px;
+    border-radius: 0px 0px 10px 10px;
+    margin-top: -20px;
+}
+
+#main .container-popup form {
+    margin-top: 40px;
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    width: 100%;
+    padding: 0 30px;
+}
+
+#main .container-popup form div {
+    display: flex;
+    justify-content: space-between;
+    /* gap: 25px; */
+    /* background-color: red; */
+}
+
+#main .container-popup form div input,
+#main .container-popup form div select {
+    padding: 4px;
+    border-radius: 5px;
+    border: none;
+    /* text-align: center; */
+    width: 110px;
+}
+
+
+#main .container-popup form input[type = 'submit'] {
+    border: 2px solid white;
+    width: 40%;
+    align-self: center; 
+} 
+
+#main .container-popup form input[type = 'submit']:hover {
+    background-color: white;
+    color: #435585;
+    transition: 0.5s;
+}
+
+#main .x {
+    position: absolute;
+    top: 2px;
+    right: 10px;
+    font-size: 30px;
+    opacity: 0.8;
+}
+
+#main .x a {
+    color: white;
+}
+
+#main .x:hover {
+    opacity: 1;
+    cursor: pointer; 
+}
+
+#main div.massage .message-success{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    font-size: 15px;
+    background-color: rgb(53, 148, 73);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#main div.massage .message-success .cancel-update {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+
+#main div.massage .message-error{
+    display: flex;
+    padding: 10px;
+    justify-content: space-between;
+    font-size: 15px;
+    background-color: rgb(53, 148, 73);
+    color: white;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+#main div.massage .message-error .cancel-update {
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+div.select-All{
+    display: flex;
+    /* background-color: red; */
+    font-size: 15px;
+    justify-content: end;
+    gap: .5rem;
+    padding: 0px 10px;
+}
+
+div.select-All label {
+    color: #435585;
+}
+input[type='checkbox']{
+    cursor: pointer;
+    width: .9rem;
+    height: .9rem;
+}
+
+button.btn-jualSampah {
+    /* background-color: red; */
+    margin: auto;
+    display: flex;
+    margin-top: 20px;
+    background-color: white;
+    border-radius: 10px;
+    width:100%;
+    color: #435585;
+    justify-content: center;
+    /* font-size: 15px; */
+    text-decoration: none;
+    border: 2px solid #435585;
+    /* outline: 2px solid #435585; */
+    transition: .2s;
+}
+
+button.btn-jualSampah:hover {
+    background-color:#435585;
+    color: white;
+}
+
+
+
+#main .container-jual .wrapper h3.judul {
+    background-color: white;
+    padding: 10px;
+    color: #435585;
+    border-radius: 0px 0px 10px 10px;
+
+}
+
+#main .container-jual .wrapper form {
+    /* background-color: red; */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 0;
+    gap: 1rem;
+    /* width: 100%; */
+}
+
+#main .container-jual .wrapper form div {
+    display: flex;
+    justify-content: space-between;
+    color: white;
+    flex-wrap: nowrap;
+}
+
+#main .container-jual .wrapper form div input {
+    width: 110px;
+    padding: 5px;
+    background-color: #435585;
+    border: 2px solid white;
+    border-radius: 10px;
+    color: white;
+}
+
+#main .container-jual .wrapper  div.informasi-jual {
+    background-color: white;
+    margin-top: 20px;
+    padding: 10px 20px;
+    color: #435585;
+    border-radius: 10px;
+    width: 90%;
+    /* align-items: center; */
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+#main .container-jual .wrapper  div.informasi-jual div.informasi-jual2 div{
+    /* background-color: blue; */
+    font-size: 12px;
+    display: flex;
+    justify-content: space-between;
+    /* flex-wrap: nowrap; */
+    margin-bottom: 7px;
+}
+
+#main .container-jual .wrapper  div.informasi-jual div.informasi-jual2 div p {
+    padding: 2px;
+}
+#main .container-jual .wrapper  div.informasi-jual div.informasi-jual2 div p ~ p {
+    /* background-color: red; */
+    width: 130px;
+    border: 1px solid #435585;
+    border-radius: 5px;
+}
+
+
+#main .container-jual div.xJualSampah {
+    /* background-color: red; */
+    position: absolute;
+    top: 0;
+    right: 10px;
+    font-size: 25px;
+}
+
+#main .container-jual div.xJualSampah a {
+    color: white;
+    opacity: 0.8;
+}
+
+#main .container-jual div.xJualSampah a:hover {
+    opacity: 1;
+}
+#main .container-jual .wrapper  div.informasi-jual>p {
+    align-self: center;
+    padding: 3px;
+    font-size: 13;
+    border-bottom: 1px solid #435585;
+    border-top: 1px solid #435585;
+    border-radius: 5px;
+}
+
+.container-jual form .btn-jual button {
+    align-self: center;
+    margin: auto;
+    width: 100px;
+    text-decoration: none;
+    padding: 10px;
+    border-radius: 10px;
+    background-color: white;
+    border: 2px solid #435585;
+    color: #435585;
+    opacity: 0.9;
+    margin-top: 10px;
+}
+
+.container-jual form .btn-jual button:hover {
+    opacity: 1;
+}
+
+div.massage-select {
+    background-color: rgb(180, 0, 0);
+    margin-left: 5px;
+    font-size: 10px;
+    padding: 10px;
+    border-radius: 10px;
+    margin-top: 5px;
+    color: white;
+    margin-bottom: 5px;
+    display: none;
+    /* visibility: hidden; */
+    justify-content: space-between;
+}
+
+
+div.massage-select .cancel-update {
+    font-size: 12px;
+    cursor: pointer;
+}
+
+div.massage-select p {font-size: 12px;}
+
+.container-dashboard {
+    width: 100%;
+    margin-top: 20px;
+    height: 90%;
+    /* background-color: red;    */
+    /* display: flex; */
+    /* margin-top: 80px; */
+    /* width: 90%; */
+    background-image: url('https://www.vivepipa.com//data/imagenes/2018/12/17/1764/lg_1545065798-62572.jpg');
+    background-size: contain;
+    background-repeat: no-repeat;
+    border-radius: 10px;
+    overflow: hidden;
+    /* border: 2px solid black; */
+    background-position: center;
+}
+
+
+
+

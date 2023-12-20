@@ -1,0 +1,194 @@
+<div class="title-menu">
+    <i class="fa-solid fa-play"></i>
+    <h3>Jual Sampah</h3>
+</div>
+
+<div class="table-sampah jualSampah">
+    <div class="massage">
+        <% if(message.success) {%>
+            <div class="message-success">
+                <div class="text-update"><%- message.success %></div>
+                <div class="cancel-update">x</div>
+            </div>
+        <% } else if(message.error) { %>
+            <div class="message-success">
+                <div class="text-update"><%- message.error %></div>
+                <div class="cancel-update">x</div>
+            </div>
+        <% } %>
+    </div>
+    <h3>Tabel Sampah</h3>
+    <div class="massage-select">
+        <p>* Harap pilih sampah yang mau dijual</p>
+        <div class="cancel-update">x</div>
+    </div>
+    <!-- <p>*pilih sampah yang ingin dijual</p> -->
+    <div class="select-All">
+        <input type="checkbox">
+        <label for="select-All">Pilih Semua</label>
+    </div>
+    <table border="1" >
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Tanggal Masuk</th>
+                <th>Jenis Sampah</th>
+                <th>Berat Sampah</th>
+                <th>Total Harga</th>
+                <th>Keterangan</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% for(let x of data){ %>
+                <tr>
+                    <td><%= x.id %></td>
+                    <td><%= x.tanggal_masuk %></td>
+                    <td><%= x.jenis_sampah%></td>
+                    <td><%= x.berat_sampah %> Kg</td>
+                    <td><%= x.total_harga %></td>
+                    <td class="checkbox">
+                        <input type="checkbox" 
+                        data-id=<%= x.id %>
+                        data-jenisSampah=<%= x.jenis_sampah %>
+                        data-beratSampah=<%= x.berat_sampah %>
+                        data-harga=<%= x.total_harga %>
+                        >
+                    </td>
+                </tr>
+                <% } %>
+            </tbody>
+        </table>
+        <button class="btn-jualSampah">
+            Jual Sampah
+        </button>
+</div>
+
+
+<div class="container-jual">
+    <div class="wrapper">
+        <h3 class="judul">Jual Sampah</h3>
+        <form action="/jualSampah/insertData" method="POST">
+            <div>
+                <label for="nama_pengepul">Nama Pengepul</label>
+                <input type="text" name="nama_pengepul" pattern="[a-zA-Z]+" required placeholder="input name">   
+            </div>
+            <div>
+                <label for="tanggal_penjualan">Tanggal Penjualan</label>
+                <input type="date" name="tanggal_jual"  required>
+            </div>
+
+            <input type="hidden" name="id_jualSampah" class="id-jualSampah">
+            <input type="hidden" name="jenis_sampah" class="jenis_sampah">
+            <input type="hidden" name="berat_sampah" class="berat_sampah">
+            <input type="hidden" name="harga" class="harga">
+
+            <div class="btn-jual">
+                <button type="submit"><h4>Jual</h4></button>
+            </div>  
+        </form>
+        <div class="informasi-jual">
+            <p>Sampah yang dipilih</p>
+            <div class="informasi-jual2">
+                <div>
+                    <p>Jenis Sampah</p>
+                    <p class="jSampah"</p>
+                </div>
+                <div>
+                    <p>Berat Sampah</p>
+                    <p class="bSampah"></p>
+                </div>
+                <div>
+                    <p>Pendapatan</p>
+                    <p class="harga"></p>
+                </div>
+            </div>
+           
+        </div>
+    
+          
+        <div class="xJualSampah"><a href="/jualSampah">&times</a></div>
+    </div>
+   
+</div>
+
+
+
+<script>
+    let btn_jual = document.querySelector('button.btn-jualSampah');
+    let container_jual = document.querySelector('.container-jual');
+    let select_all = document.querySelector('div.select-All input');
+    let select = document.querySelectorAll('tbody .checkbox input');
+    const exit = document.querySelector('.x');
+    let tableSampah = document.querySelector('div.table-sampah');
+    let selectrow = Array.from(select);
+
+    let id = [];
+    let jenisSampah = [];
+    let beratSampah = [];
+    let harga = []
+
+    select_all.addEventListener('click', (e) => {
+        if (e.target.checked) {
+            for (let x of selectrow) {
+                x.checked = true;
+                id.push(x.getAttribute('data-id'));
+                jenisSampah.push(x.getAttribute('data-jenisSampah'));
+                beratSampah.push(x.getAttribute('data-beratSampah'))
+                harga.push(x.getAttribute('data-harga'))
+            }
+        } else {
+            for (let x of selectrow) {
+                x.checked = false;
+                id = id.filter((value) => value !== x.getAttribute('data-id'));
+                jenisSampah = jenisSampah.filter((value) => value !== x.getAttribute('data-jenisSampah'));
+                beratSampah = beratSampah.filter((value)=> value !== x.getAttribute('data-beratSampah'));
+                harga = harga.filter((value)=> value !== x.getAttribute('data-harga'));
+            }
+        }
+    });
+
+    btn_jual.addEventListener('click', (e) => {
+        if (id.length === 0) {
+            document.querySelector('div.massage-select').style.display = 'flex';
+        } else {
+            let jSampah = [...new Set(jenisSampah)]; 
+            beratSampah = beratSampah.map(convert => Number(convert)).reduce((acc, cur)=> acc + cur)
+            harga = harga.map(convert => Number(convert)).reduce((acc, cur)=> acc + cur)
+            document.querySelector('.informasi-jual2 p.jSampah ').innerHTML= `${jSampah.join(', ')}`;
+            document.querySelector('.informasi-jual2 p.harga ').innerHTML= `${harga}`;
+            document.querySelector('.informasi-jual2 p.bSampah ').innerHTML= `${beratSampah} Kg`;
+            document.querySelector('.container-jual form .jenis_sampah').value = `${jSampah}`
+            document.querySelector('.container-jual form .id-jualSampah').value = `${id}`;
+            document.querySelector('.container-jual form .berat_sampah').value = `${beratSampah}`;
+            document.querySelector('.container-jual form .harga').value = `${harga}`;
+
+
+            container_jual.setAttribute('id', 'container-jualSampah');
+            container_jual.style.visibility = 'visible';
+            tableSampah.style.filter = 'blur(8px)';
+        }
+    });
+
+
+    for (let x of selectrow) {
+        x.addEventListener('click', (e) => {
+            if (e.target.checked) {
+                id.push(e.target.getAttribute('data-id'));
+                jenisSampah.push(e.target.getAttribute('data-jenisSampah'));
+                beratSampah.push(e.target.getAttribute('data-beratSampah'))
+                harga.push(e.target.getAttribute('data-harga'))
+            } else {
+                id = id.filter((value) => value !== e.target.getAttribute('data-id'));
+                jenisSampah = jenisSampah.filter((value) => value !== e.target.getAttribute('data-jenisSampah'));
+                beratSampah = beratSampah.filter((value)=> value !== e.target.getAttribute('data-beratSampah'))
+                harga = harga.filter((value)=> value !== e.target.getAttribute('data-harga'))
+            }
+        });
+    }
+
+    
+    exit.addEventListener('click', () => {
+        container_jual.removeAttribute('id', 'container-jualSampah');
+        container_jual.style.visibility = 'hidden';
+    });
+</script>

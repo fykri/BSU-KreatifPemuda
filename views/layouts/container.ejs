@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.1/css/all.min.css" integrity="sha512-MV7K8+y+gLIBoVD59lQIYicR65iaqukzvf/nwasF0nqhPay5w/9lJmVM2hMDcnK1OnMGCdVK+iQrJ7lzPJQd1w==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    
+    <title>BANK SAMPAH UNIT</title>
+</head>
+<body>
+<div class="container">
+    <div class="header">
+        <h1>BSU KREATIF PEMUDA</h1>
+        <hr>
+        <hr>
+        <nav>
+            <a href="/" class="dashboard">Dashboard</a>
+            <a href="/keteranganSampah" class="ketSampah">Keterangan Sampah</a>
+            <a href="/sampahMasuk" class="sMasuk">Sampah Masuk</a>
+            <a href="/jualSampah" class="sKeluar">Jual Sampah</a>
+            <a href="/riwayatPenjualan" class="rPen">Riwayat Penjualan</a>
+        </nav>
+        <div class="ig">
+            <i class="fa-brands fa-instagram" style="color: #ffffff;"></i>
+            <p>d_kelor_</p>
+        </div>
+    </div>
+
+     <div id="main">
+        <%- body %>
+    </div>
+</div>
+
+<script>
+
+    const pathname = window.location.pathname;
+    const pageName = pathname.split('/').pop();
+    // const navlink = document.querySelectorAll('nav a')
+    // const link = Array.from(navlink)
+        if(pageName == '') {
+            document.querySelector('nav a.dashboard').classList.add('active')
+        }
+
+        if(pageName == 'keteranganSampah') {
+            document.querySelector('nav a.ketSampah').classList.add('active')
+        }
+
+        if(pageName == 'sampahMasuk') {
+            document.querySelector('nav a.sMasuk').classList.add('active')
+        }
+
+        if(pageName == 'jualSampah') {
+            document.querySelector('nav a.sKeluar').classList.add('active')
+        }
+
+        if(pageName == 'riwayatPenjualan') {
+            document.querySelector('nav a.rPen').classList.add('active')
+        }
+
+
+    const cancel_update = document.querySelector('.cancel-update')
+    cancel_update.addEventListener('click', (e)=>{
+        e.target.parentElement.style.display = 'none';
+    })
+
+   
+</script>
+</body>
+</html>

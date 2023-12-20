@@ -1,0 +1,97 @@
+<div class="title-menu">
+    <i class="fa-solid fa-play"></i>
+    <h3>Keterangan Sampah</h3>
+</div>
+
+
+<div class="table-sampah" id="data-table"> 
+    <div class="massage">
+        <% if(message.success) {%>
+            <div class="message-success">
+                <div class="text-update"><%- message.success %></div>
+                <div class="cancel-update">x</div>
+            </div>
+        <% } else if(message.error) { %>
+            <div class="message-error">
+                <div class="text-update"><%- message.error %></div>
+                <div class="cancel-update">x</div>
+            </div>
+        <% } %>
+    </div>
+   <p style="color: #435585; margin-top: 10px; font-size: small;">*berisi informasi informasi sampah</p>
+    <table border="1">
+        <tr>
+            <th>Kategori Sampah</th>
+            <th>Harga Jual</th>
+            <th>Harga Beli</th>
+            <th>Aksi</th>
+        </tr>
+        <% for(let x of data){ %>
+         <tr>
+            <td><%= x.kategori_sampah %></td>
+            <td><%= x.Harga_Jual %></td>
+            <td><%= x.Harga_Beli %></td>
+            <td class="edit-delete">
+                <a href="javascript:void()" 
+                    data-kategoriSampah = <%= x.kategori_sampah %>
+                    data-hargaJual = <%= x.Harga_Jual %>
+                    data-hargaBeli = <%= x.Harga_Beli %>
+                    class="button-update"><i class="fa-solid fa-pen-to-square"></i>
+                </a>
+            </td>
+         </tr>
+         <% } %>
+    </table>
+</div>
+
+<div class="popup-updateData">
+    <div class="container-popup">
+        <h3 style="font-size: 20px;" >UPDATE DATA</h3>
+        <form action="/keteranganSampah/update?_method=PUT" method="POST">
+            <div class="jenis-sampah">
+                <label for="kategori_sampah" class="katSampah" style="margin: auto; border-bottom: 2px solid white; color: white;padding: 8px; border-radius: 10px;"></label>
+                <input type="hidden" name="kategori_sampah"  class="kategoriSampah">
+            </div>
+
+            <div class="harga-jual">
+                <label for="harga-jual" >Harga Jual</label>
+                <input type="number" name="harga_jual" min="100" width="100%" class="hargaJual" required>
+            </div>
+
+            <div class="harga-beli">
+                <label for="harga-beli">harga Beli</label>
+                <input type="number" name="harga_beli" min="100" width="100%" class="hargaBeli"  required>
+            </div>
+            <input type="submit" value="Update">
+        </form>
+        <div class="x"><a href="/keteranganSampah">&times</a></div>
+    </div>
+</div>
+
+<script>
+    const editButton = document.querySelectorAll('.table-sampah a.button-update')
+    const popup = document.querySelector('#main .popup-updateData')
+    const exit = document.querySelector('.x')
+    const tableSampah = document.querySelector('.table-sampah')
+    for(let x of editButton) {
+        x.addEventListener('click', ()=> {
+            popup.setAttribute('id', 'popup')
+            popup.style.visibility = 'visible'
+            tableSampah.style.filter = 'blur(8px)'
+            const kategori_sampah = x.getAttribute('data-kategoriSampah')
+            const harga_jual = x.getAttribute('data-hargaJual')
+            const harga_beli = x.getAttribute('data-hargaBeli')
+
+            document.querySelector('.container-popup label.katSampah').innerHTML = `${kategori_sampah}`;
+            document.querySelector('.container-popup input.kategoriSampah').value = `${kategori_sampah}`;
+            document.querySelector('.container-popup input.hargaJual').value = `${harga_jual}`;
+            document.querySelector('.container-popup input.hargaBeli').value = `${harga_beli}`;
+        })
+        exit.addEventListener('click', ()=>{
+            popup.removeAttribute('id', 'popup')
+            tableSampah.style.filter = 'blur(0)'
+        })
+    }
+
+
+</script>
