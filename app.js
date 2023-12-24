@@ -16,11 +16,12 @@ const ketSampahRouter = require('./routes/ketSampahRouter')
 const sampahMasukRouter = require('./routes/sampahMasukRouter')
 const jualSampahRouter = require('./routes/jualSampahRouter')
 const riwayatPenjualanRouter = require('./routes/riwayatPenjualanRouter')
+const dashboard = require('./routes/dashboardRoute')
 
 app.use(bodyParser.urlencoded({extended:false}))
 app.use(bodyParser.json())
 
-
+app.use('/img', express.static('img'))
 app.use(express.static('public'))
 app.use('/css', express.static(__dirname + 'public/css'))
 
@@ -52,12 +53,9 @@ app.use('/keteranganSampah', ketSampahRouter);
 app.use('/sampahMasuk', sampahMasukRouter);
 app.use('/jualSampah', jualSampahRouter);
 app.use('/riwayatPenjualan', riwayatPenjualanRouter);
+app.use('/', dashboard)
 
 
-
-app.get('/', (req, res)=> {
-    res.render('dashboard')
-})
 
 app.use(logger('dev'))
 app.use(express.json());
